@@ -35,8 +35,20 @@
 				</div>
 			</div>
 
-			<?php include "./front/main.php";?>
-			
+			<?php //include "./front/main.php";?>
+
+			<?php
+				$do=$_GET['do']??'main'; //三元運算式 只有在isset判斷下可以這樣短寫=>這邊是判斷是否有收到$_GET do值
+				$file="./front/{$do}.php";
+				if(file_exists($file)){
+					// 會使用file_exists()是因為亂打會出現warning訊息 找不到路徑、檔案
+					include $file;
+				}else{
+					include "./front/main.php";
+				}
+
+			?>
+
 			<div id="alt" style="position: absolute; width: 350px; min-height: 100px; word-break:break-all; text-align:justify;  background-color: rgb(255, 255, 204); top: 50px; left: 400px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
 			<script>
 				$(".sswww").hover(
@@ -55,7 +67,8 @@
 			</script>
 			<div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
 				<!--右邊-->
-				<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo(&#39;?do=admin&#39;)">管理登入</button>
+				<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo(&#39;?do=login&#39;)">管理登入</button>
+				<!-- 這邊要確認為何要這樣做?? 把do=admin -> do=login -->
 				<div style="width:89%; height:480px;" class="dbor">
 					<span class="t botli">校園映象區</span>
 					<script>
