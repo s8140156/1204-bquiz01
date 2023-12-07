@@ -35,10 +35,9 @@
 				</div>
 			</div>
 
-			<?php //include "./front/main.php";?>
-
 			<?php
 				$do=$_GET['do']??'main'; //三元運算式 只有在isset判斷下可以這樣短寫=>這邊是判斷是否有收到$_GET do值
+				// $do=(isset($_GET['do']))?$_GET['do']:'main'; //原先三元運算寫法 上面是簡寫
 				$file="./front/{$do}.php";
 				if(file_exists($file)){
 					// 會使用file_exists()是因為亂打會出現warning訊息 找不到路徑、檔案
@@ -46,6 +45,39 @@
 				}else{
 					include "./front/main.php";
 				}
+
+				// if(isset($_GET['do'])){
+				// 	switch($_GET['do']){
+				// 		case "login":
+				// 			include "./front/login.php";
+				// 		break;
+				// 		case "main":
+				// 			include "./front/main.php";
+				// 		break;
+				// 		case "news":
+				// 			include "./front/news.php";
+				// 		break;
+				// 	}
+				// }else{
+				// 	include "./front/news.php";
+				// }
+
+					// switch($_GET['do']){
+					// 	case "login":
+					// 		include "./front/login.php";
+					// 	break;
+					// 		include "./front/main.php";
+					// 	case "news":
+					// 		include "./front/news.php";
+					// 	break;
+					// 	default: //什麼都不做, 直接回首頁
+					// 		include "./front/main.php";							
+					// }
+				
+				// 邏輯發想 透過$_GET['do']取得網址上的值用switchcase切換
+				// 但如果?do=後面亂打 則index首頁版面會亂(不知選什麼)
+				// 但若是沒有打do, 由於switchcase是基於do判斷 則會出現warning訊息
+
 
 			?>
 
