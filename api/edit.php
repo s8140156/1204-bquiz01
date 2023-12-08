@@ -13,6 +13,7 @@ foreach($_POST['text'] as $id => $text){
 		$row=$DB->find($id);
         $row['text']=$text;
         $row['sh']=(isset($_POST['sh']) && $_POST['sh']==$id)?1:0;
+        $row['sh']=(isset($_POST['sh']) && in_array($id,$_POST['sh']))?1:0;
         $DB->save($row);
 	}
 }
