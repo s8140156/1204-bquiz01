@@ -9,8 +9,8 @@
 
 					<td width="50%">頁尾版權資料</td>
 
-					<td width="50%"><input type="text" name="bottom" value="<?=$Bottom->find(1)['bottom'];?>"></td>
-					<input type="hidden" name="table" value="bottom">
+					<td width="50%"><input type="text" name="bottom" value="<?= $Bottom->find(1)['bottom']; ?>"></td>
+					<input type="hidden" name="table" value="<?= $do; ?>">
 
 					<td></td>
 				</tr>
@@ -19,6 +19,7 @@
 		<table style="margin-top:40px; width:70%;">
 			<tbody>
 				<tr>
+					<td width="200px"></td>
 
 					<td class="cent"><input type="submit" value="修改確定"><input type="reset" value="重置"></td>
 				</tr>
