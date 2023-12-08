@@ -1,5 +1,6 @@
 <?php
-
+// 含刪除及title(只有單筆)及其他頁面(多筆)的顯示修改
+// ad.php傳過來的
 include_once "db.php";
 
 $table=$_POST['table'];
@@ -12,8 +13,11 @@ foreach($_POST['text'] as $id => $text){
 	}else{
 		$row=$DB->find($id);
         $row['text']=$text;
-        $row['sh']=(isset($_POST['sh']) && $_POST['sh']==$id)?1:0;
-        $row['sh']=(isset($_POST['sh']) && in_array($id,$_POST['sh']))?1:0;
+		if($table=='title'){
+			$row['sh']=(isset($_POST['sh']) && $_POST['sh']==$id)?1:0;
+		}else{
+			$row['sh']=(isset($_POST['sh']) && in_array($id,$_POST['sh']))?1:0;
+		}
         $DB->save($row);
 	}
 }

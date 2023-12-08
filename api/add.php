@@ -1,4 +1,5 @@
 <?php
+//這是新增圖片及顯示
 
 include_once "db.php";
 
@@ -13,7 +14,8 @@ if(isset($_FILES['img']['tmp_name'])){
 	$_POST['img']=$_FILES['img']['name'];
 }
 
-$_POST['sh']=
+$_POST['sh']=($table=='title')?0:1;
+
 unset($_POST['table']);
 $DB->save($_POST);
 

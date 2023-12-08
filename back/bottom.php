@@ -9,8 +9,10 @@
 
 					<td width="50%">頁尾版權資料</td>
 
-					<td width="50%"><input type="text" name="bottom" value="<?= $Bottom->find(1)['bottom']; ?>"></td>
-					<input type="hidden" name="table" value="<?= $do; ?>">
+					<td width="50%">
+						<input type="text" name="bottom" value="<?= $Bottom->find(1)['bottom']; ?>">
+						<input type="hidden" name="table" value="<?= $do; ?>">
+					</td>
 
 					<td></td>
 				</tr>

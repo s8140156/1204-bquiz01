@@ -1,5 +1,7 @@
 <?php
 
+//頁尾版權編輯bottom.php
+
 include_once "db.php";
 //取得資料表名稱 (從total.php的hidden input name=table)
 $table=$_POST['table'];

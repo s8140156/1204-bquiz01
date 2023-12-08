@@ -13,7 +13,6 @@
 				<?php
 				$rows = $Title->all();
 				foreach ($rows as $row) {
-
 				?>
 					<tr>
 						<td width="45%">
@@ -24,6 +23,7 @@
 						</td>
 						<td width="7%">
 							<input type="radio" name="sh" value="<?=$row['id'];?>"<?=($row['sh']==1)?'checked':'';?>>
+							<!-- 顯示是單選(radio)所以用三元寫如果sh=1在顯示上show checked -->
 						</td>
 						<td width="7%">
 							<input type="checkbox" name="del[]" value="<?=$row['id'];?>">
@@ -42,7 +42,7 @@
 			<tbody>
 				<tr>
 					<input type="hidden" name="table" value="<?= $do; ?>">
-					<td width="200px"><input type="button" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,'./modal/<?= $do; ?>.php?table=<?= $do; ?>')" value="新增網站標題圖片"></td>
+					<td width="200px"><input type="button" onclick="op('#cover','#cvr','./modal/<?= $do; ?>.php?table=<?= $do; ?>')" value="新增網站標題圖片"></td>
 					<td class="cent"><input type="submit" value="修改確定"><input type="reset" value="重置"></td>
 				</tr>
 			</tbody>

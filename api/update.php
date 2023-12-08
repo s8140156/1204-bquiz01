@@ -1,4 +1,5 @@
 <?php
+//這是更新圖片
 
 include_once "db.php";
 

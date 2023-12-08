@@ -8,9 +8,10 @@
 				<tr class="yel">
 
 					<td width="50%">進站總人數</td>
-
-					<td width="50%"><input type="number" name="total" value="<?=$Total->find(1)['total'];?>"></td>
-					<input type="hidden" name="table" value="<?=$do;?>">
+					<td width="50%">
+						<input type="number" name="total" value="<?= $Total->find(1)['total']; ?>">
+						<input type="hidden" name="table" value="<?= $do; ?>">
+					</td>
 					<!-- 這邊還要釐清一下 裡面name, value的對應 -->
 
 					<td></td>
