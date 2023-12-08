@@ -1,5 +1,6 @@
 <?php
 //這是新增圖片及顯示
+//使用在ad/title.php(modal)
 
 include_once "db.php";
 

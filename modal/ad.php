@@ -10,6 +10,7 @@
 	</table>
 	<div>
 		<input type="hidden" name="table" value="<?= $_GET['table']; ?>">
+		<!-- 使用get or post差異？ -->
 		<input type="submit" value="新增">
 		<input type="reset" value="重置">
 	

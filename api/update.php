@@ -1,5 +1,6 @@
 <?php
-//這是更新圖片
+//這是更新標題網站圖片
+// 使用在upload.php(modal)
 
 include_once "db.php";
 
