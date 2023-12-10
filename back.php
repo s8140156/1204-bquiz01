@@ -97,6 +97,8 @@
 				}else{
 					include "./back/title.php";
 				}
+				// 然後 index跟back其實是兩個獨立的頁面;只是你從apache進來時 會先以index頁面為主
+				// 所以
 
 			?>
 			</div>

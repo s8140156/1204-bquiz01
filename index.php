@@ -50,6 +50,10 @@
 				}else{
 					include "./front/main.php";
 				}
+				// 透過判斷檔案是否存在決定引入的頁面
+				// 終於自己想通 因為是“手動”在index頁面後加上?do= 所以可以用$_GET後面帶參數do去判斷輸入是否與檔案裡面相同
+				// 而且 為什麼??後面加main是判斷除?do後收到的參數(與檔案名一致) 當你隨便亂打 
+				// 你最後還是會被引導到main.php頁面去
 
 				// if(isset($_GET['do'])){
 				// 	switch($_GET['do']){
@@ -105,7 +109,7 @@
 			<div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
 				<!--右邊-->
 				<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo(&#39;?do=login&#39;)">管理登入</button>
-				<!-- 這邊要確認為何要這樣做?? 把do=admin -> do=login -->
+				<!-- 把do=admin -> do=login 只是切換到loginin頁面(管理者登入頁面) 因為改名字了-->
 				<div style="width:89%; height:480px;" class="dbor">
 					<span class="t botli">校園映象區</span>
 					<script>
