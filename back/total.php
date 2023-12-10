@@ -11,8 +11,10 @@
 					<td width="50%">
 						<input type="number" name="total" value="<?= $Total->find(1)['total']; ?>">
 						<input type="hidden" name="table" value="<?= $do; ?>">
+						<!--增加一個hidden input, 設個name="table"透過表單要傳值去edit_info.php
+						 table裡面的value(資料)其實是資料表（由$do取得）-->
 					</td>
-					<!-- 這邊還要釐清一下 裡面name, value的對應 -->
+
 
 					<td></td>
 				</tr>
@@ -21,7 +23,7 @@
 		<table style="margin-top:40px; width:70%;">
 			<tbody>
 				<tr>
-
+					<td width="200px"></td>
 					<td class="cent"><input type="submit" value="修改確定"><input type="reset" value="重置"></td>
 				</tr>
 			</tbody>

@@ -11,7 +11,9 @@
 
 					<td width="50%">
 						<input type="text" name="bottom" value="<?= $Bottom->find(1)['bottom']; ?>">
-						<input type="hidden" name="table" value="<?= $do; ?>">
+						<input type="hidden" name="table" value="<?= $do; ?>"> 
+						<!--增加一個hidden input, 設個name="table"透過表單要傳值去edit_info.php
+						 table裡面的value(資料)其實是table資料表（由$do取得）-->
 					</td>
 
 					<td></td>
