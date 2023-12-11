@@ -10,14 +10,22 @@ include_once "db.php";
 $DB=${ucfirst($_POST['table'])};
 $table=$_POST['table'];
 // 先把post傳來的資料存成變數$table
+switch($table){
+    case "admin":
+        unset($_POST['pw2']);
+    break;
+}
 
 if(isset($_FILES['img']['tmp_name'])){
 	move_uploaded_file($_FILES['img']['tmp_name'],"../img/".$_FILES['img']['name']);
 	$_POST['img']=$_FILES['img']['name'];
 }
+if($table != 'admin'){
+	$_POST['sh']=($table=='title')?0:1;
+}
 
 
-$_POST['sh']=($table=='title')?0:1;
+// $_POST['sh']=($table=='title')?0:1;
 
 
 unset($_POST['table']);
