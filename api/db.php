@@ -147,7 +147,17 @@ $Total=new DB('total');
 $Bottom=new DB('bottom');
 $Ad=new DB('ad');
 $Mvim=new DB('mvim');
+$Image=new DB('image');
+$News=new DB('news');
+$Admin=new DB('admin');
+$Menu=new DB('menu');
 
-
+if(isset($_GET['do'])){
+    $DB=${ucfirst($_GET['do'])};
+}else{
+    $DB=$Title;
+}
+// 在這邊把資料表存成變數$DB, 然後先include在相關程式先, 解決大量重複問題, 有點像是全域變數
+// 不會跟api/edit.php 使用的$DB打架 因為程序導入這個為先, 後edit.php使用$table=$_POST['table']
 
 ?>

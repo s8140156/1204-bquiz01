@@ -5,31 +5,31 @@
 			<tbody>
 				<tr class="yel">
 					<td width="70%">動畫圖片</td>
-					<!-- <td width="23%">替代文字</td> -->
 					<td width="10%">顯示</td>
 					<td width="10%">刪除</td>
 					<td></td>
 				</tr>
 				<?php
-				$rows = $Mvim->all();
+				$rows = $DB->all();
 				foreach ($rows as $row) {
 				?>
 					<tr>
-						<td width="45%">
-							<img src="./img/<?= $row['img']; ?>" style="width:300px;height:30px">
+						<td>
+							<img src="./img/<?= $row['img']; ?>" style="width:150px;height:100px">
+							<!-- 注意圖片的呈現的寬高3:4 or 3:5 -->
 						</td>
-						<!-- <td width="23%">
-							<input type="text" name="text[<?=$row['id'];?>]" style="width:90%" value="<?=$row['text'];?>">
-						</td> -->
+						<input type="hidden" name="id[]" value="<?=$row['id'];?>">
+						<!-- 增加hidden name=id[] -->
+
 						<td>
 							<input type="checkbox" name="sh[]" value="<?=$row['id'];?>"<?=($row['sh']==1)?'checked':'';?>>
-							<!-- 顯示是單選(radio)所以用三元寫如果sh=1在顯示上show checked -->
+							<!--  這邊可顯示多筆 改checkbox 並name=sh[]是陣列 -->
 						</td>
 						<td>
 							<input type="checkbox" name="del[]" value="<?=$row['id'];?>">
 						</td>
 						<td>
-						<input type="button" onclick="op('#cover','#cvr','./modal/upload.php?table=<?=$do;?>&id=<?=$row['id'];?>')" value="更新動畫">
+						<input type="button" onclick="op('#cover','#cvr','./modal/upload.php?table=<?=$do;?>&id=<?=$row['id'];?>')" value="更換動畫">
 						</td>
 					</tr>
 
