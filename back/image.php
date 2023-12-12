@@ -14,8 +14,10 @@
 				$div = 3;
 				$pages = ceil($total / $div);
 				$now = $_GET['p'] ?? 1;
+				// 三元運算式:判斷$_GET['p']是否有值
 				$start = ($now - 1) * $div;
 				$rows = $DB->all(" limit $start,$div");
+				// 確認函式用法
 				// 增加資料表變數$DB 減少重複複寫
 				foreach ($rows as $row) {
 				?>

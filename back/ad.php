@@ -38,6 +38,7 @@
 			<tbody>
 				<tr>
 					<input type="hidden" name="table" value="<?= $do; ?>">
+					<!-- 可是為什麼要給變數？ -->
 					<td width="200px"><input type="button" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,'./modal/<?= $do; ?>.php?table=<?= $do; ?>')" value="新增動態文字廣告"></td>
 					<td class="cent"><input type="submit" value="修改確定"><input type="reset" value="重置"></td>
 				</tr>

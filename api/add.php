@@ -25,8 +25,6 @@ if($table != 'admin'){
 }
 
 
-// $_POST['sh']=($table=='title')?0:1;
-
 
 unset($_POST['table']);
 // 因為從modal/title.php來的資訊 有text, 也有table 但table在資料表裡沒有欄位 無法寫入 所以在執行存進資料表前 先unset $_post['table'](刪除變數 不需要的欄位)再存入
