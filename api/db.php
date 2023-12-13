@@ -75,7 +75,7 @@ class DB{
         
             $sql = $sql . $cols . " values " . $vals;
         }
-
+        echo $sql;
         return $this->pdo->exec($sql);
     }
 
