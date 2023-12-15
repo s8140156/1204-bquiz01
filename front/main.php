@@ -41,6 +41,13 @@
 				</script>
 				<div style="width:95%; padding:2px; height:190px; margin-top:10px; padding:5px 10px 5px 10px; border:#0C3 dashed 3px; position:relative;">
 					<span class="t botli">最新消息區
+						<?php
+						if($News->count(['sh'=>1])>5){
+							echo "<a href='?do=news' style='float:right'>More</a>";
+
+						}
+
+						?>
 					</span>
 					<ul class="ssaa" style="list-style-type:decimal;">
 					<!-- decimal:數字 是說列表有編碼 沒有decimal就是點點 style還有square... -->
@@ -50,6 +57,9 @@
 					foreach($news as $n){
 						echo "<li>";
 						echo mb_substr($n['text'],0,20);
+						echo "<div class='all' style='display:none'>";
+						echo $n['text'];
+						echo "</div>";
 						echo "...</li>";
 					}
 					?>
@@ -59,6 +69,9 @@
 						$(".ssaa li").hover(
 							function() {
 								$("#altt").html("<pre>" + $(this).children(".all").html() + "</pre>")
+								// .html 是在做把後面pre(整段字串)放到id=altt(容器)裡面
+								// $(this)=>是指hover過去該<li>的元素以下的容器.children (.all=>設定class=all)
+								// 最後一個.html() 就像sql all() 抓取整個資料
 								$("#altt").show()
 							}
 						)
