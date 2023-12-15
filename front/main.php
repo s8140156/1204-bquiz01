@@ -43,7 +43,7 @@
 					<span class="t botli">最新消息區
 						<?php
 						if($News->count(['sh'=>1])>5){
-							echo "<a href='?do=news' style='float:right'>More</a>";
+							echo "<a href='?do=news' style='float:right'>More...</a>";
 
 						}
 

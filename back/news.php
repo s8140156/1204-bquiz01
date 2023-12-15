@@ -16,7 +16,7 @@
 				$pages = ceil($total / $div);
 				$now = $_GET['p'] ?? 1;
 				$start = ($now - 1) * $div;
-				$rows = $DB->all("limit $start,$div");
+				$rows = $DB->all(" limit $start,$div");
 				// 使用查詢條件limit (要空一格 but why?)
 				// 如果 $start 是 10，$div 是 5，那么查询将返回从第 11 行到第 15 行的结果
 				// ex.SELECT * FROM `table` LIMIT 10,20;
