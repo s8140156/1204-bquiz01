@@ -13,7 +13,8 @@
                 </tr>
                 <?php
 
-                $rows=$DB->all();
+                $rows=$DB->all(['menu_id'=>0]);
+                // 要顯示的是主選單而已
                 foreach($rows as $row){
                 ?>
                 <tr>
@@ -23,7 +24,8 @@
                     <td>
                         <input type="text" name="href[]" value="<?=$row['href'];?>">
                     </td>
-                    <td></td>
+                    <td><?=$Menu->count(['menu_id'=>$row['id']]);?></td>
+                    <!-- 增加次選單數 -->
                     <td>
                         <input type="checkbox" name="sh[]" value="<?=$row['id'];?>" <?=($row['sh']==1)?'checked':'';?>>
                     </td>

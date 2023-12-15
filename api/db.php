@@ -75,7 +75,7 @@ class DB{
         
             $sql = $sql . $cols . " values " . $vals;
         }
-        echo $sql;
+        // echo $sql;
         return $this->pdo->exec($sql);
     }
 
@@ -153,10 +153,25 @@ $Admin=new DB('admin');
 $Menu=new DB('menu');
 
 if(isset($_GET['do'])){
-    $DB=${ucfirst($_GET['do'])};
+    if(isset(${ucfirst($_GET['do'])})){
+        $DB=${ucfirst($_GET['do'])};
+    }
 }else{
     $DB=$Title;
 }
+
+//第一種作法
+// $tables=array_keys(get_defined_vars());
+// // dd($tables);
+// // 這支程式是在判別專案裡面所建的所有變數然後使用array_keys把這些變數變成陣列
+// if(isset($_GET['do'])){
+//     $key=ucfirst($_GET['do']);
+//     if(in_array($key,$tables)){
+//         $DB=$$key;
+//     }
+// }else{
+//     $DB=$Title;
+// }
 // 在這邊把資料表存成變數$DB, 然後先include在相關程式先, 解決大量重複問題, 有點像是全域變數
 // 不會跟api/edit.php 使用的$DB打架 因為程序導入這個為先, 後edit.php使用$table=$_POST['table']
 
