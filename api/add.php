@@ -24,6 +24,12 @@ if($table != 'admin'){
 	$_POST['sh']=($table=='title')?0:1;
 }
 
+// switch($table){
+//     case "menu";
+//     $_POST['menu_id']=0;
+// }
+//如果有多加以上switch case針對menu_id寫進先預設為0的話,則mac應該就可以直接寫入資料庫而不會有fatal warning
+
 
 
 unset($_POST['table']);

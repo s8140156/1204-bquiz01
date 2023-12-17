@@ -28,7 +28,7 @@
 				?>
 					<tr>
 						<td width="23%">
-							<textarea type="text" name="text[]" style="width:90%" value=""><?= $row['text']; ?></textarea>
+							<textarea type="text" name="text[]" style="width:90%"><?= $row['text']; ?></textarea>
 							<input type="hidden" name="id[]" value="<?= $row['id']; ?>">
 
 							<!--  改成textarea及將value傳值改接到後面,不要斷行 -->
