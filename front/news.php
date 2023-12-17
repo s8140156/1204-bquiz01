@@ -2,6 +2,8 @@
 	<!-- <marquee scrolldelay="120" direction="left" style="position:absolute; width:100%; height:40px;">
 	</marquee> -->
 	<?php include "marquee.php"; ?>
+		<!-- 將跑馬燈功能(獨立一個功能) include到其他前台頁面（因為前台頁面都是獨立的） -->
+
 
 	<div style="height:32px; display:block;"></div>
 	<!--正中央-->
