@@ -18,10 +18,11 @@ if(isset($_POST['id'])){
 if(isset($_POST['add_text'])){
 	foreach($_POST['add_text'] as $idx => $text){
 		if($text!=""){
-			// 確認次選單不要有空值, 所以如果不是空值才增加
+			// 這個判斷是在“次選單的名稱(這個欄位)”不可以有空值後 才可以執行以下程式（增加欄位寫入）
+			// 但是 如果次選單名稱有輸入 但“次選單連結網址”沒有資訊 還是可寫進資料庫
 			$data=[];
 			$data['text']=$text;
-			$date['href']=$_POST['add_href'][$idx];
+			$data['href']=$_POST['add_href'][$idx];
 			$data['sh']=1;
 			$data['menu_id']=$_POST['menu_id'];
 			// 有在modal/submenu設定hidden id=menu_id(就是傳過來的主id)

@@ -14,7 +14,7 @@
                 <?php
 
                 $rows=$DB->all(['menu_id'=>0]);
-                // 要顯示的是主選單而已
+                // 要顯示的是主選單（id=0)而已, 不然畫面呈現次選單也會顯現
                 foreach($rows as $row){
                 ?>
                 <tr>

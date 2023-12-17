@@ -34,6 +34,7 @@
 		<input type="hidden" name="table" value="<?= $_GET['table']; ?>">
 		<input type="hidden" name="menu_id" value="<?= $_GET['id']; ?>">
 		<!-- 要自己創造name=menu_id傳送過去 而且就是以主選單的id -->
+		<!-- 從back/menu.php有傳兩個值過來一個是table, 一個是id 在這邊就用兩個hidden接收 -->
 		<input type="submit" value="修改確定">
 		<input type="reset" value="重置">
 		<input type="button" value="更多次選單" onclick="more()">
