@@ -112,22 +112,40 @@
 				<!-- 把do=admin -> do=login 只是切換到loginin頁面(管理者登入頁面) 因為改名字了-->
 				<div style="width:89%; height:480px;" class="dbor">
 					<span class="t botli">校園映象區</span>
+					<?php
+					$imgs=$Images->all(['sh='=>1]);
+					foreach($imgs as $idx => $img){
+
+						?>
+					<div id="ssaa" class="im"><img src="" style="width:150px;height:103px"></div>
+					<?php
+				}
+					?>
 					<script>
-						var nowpage = 0,
+						var nowpage = 1,
 							num = 0;
+							// 宣告變數 js用,分開即可
+							//調整nowpage = 0=>1
 
 						function pp(x) {
 							var s, t;
-							if (x == 1 && nowpage - 1 >= 0) {
+							if (x == 1 && (nowpage - 1) >= 0) {
+								// 在php, 運算元最好隔開; js還好
+								// x=1應該是點擊上一頁
 								nowpage--;
 							}
 							if (x == 2 && (nowpage + 1) * 3 <= num * 1 + 3) {
+								// x=2應該是點擊下一頁
+								//每翻頁一次放三張圖片
 								nowpage++;
 							}
 							$(".im").hide()
+							//class=im的物件都會隱藏
 							for (s = 0; s <= 2; s++) {
+								//迴圈跑三次
 								t = s * 1 + nowpage * 1;
 								$("#ssaa" + t).show()
+								//id=ssaa+1or2or3...的物件會顯示
 							}
 						}
 						pp(1)
