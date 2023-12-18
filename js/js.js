@@ -29,3 +29,5 @@ function cl(x)
 {
 	$(x).fadeOut();
 }
+
+// mouseover+mouseout=hover

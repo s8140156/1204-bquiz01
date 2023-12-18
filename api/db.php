@@ -159,6 +159,13 @@ if(isset($_GET['do'])){
 }else{
     $DB=$Title;
 }
+
+if(!isset($_SESSION['visited'])){
+    $Total->q("update `total` set `total`=`total`+1 where `id`=1");
+    $_SESSION['visited']=1;
+    // 不是很懂
+}
+
 // 為什麼要寫這段是因為發生在index要登入到login時,會有warning訊息
 // 所以要保證即使亂打 進哪個頁面都可以正常顯示(不會有錯誤訊息)
 // 就是將此專案所有變數都納入考量
