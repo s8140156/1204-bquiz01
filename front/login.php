@@ -3,14 +3,14 @@
 if(isset($_SESSION['login'])){
 	to("back.php");
 }
+// 這應該是判斷如果session有收到login資訊則直接轉到後台
 
 if(isset($_GET['error'])){
 	echo "<script>alert('{$_GET['error']}')</script>";
 }
-
+// 這邊使用js當登入錯誤使用alert顯示錯誤訊息
 
 ?>
-
 
 <div class="di" style="height:540px; border:#999 1px solid; width:53.2%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
 	<!-- <marquee scrolldelay="120" direction="left" style="position:absolute; width:100%; height:40px;">
@@ -27,7 +27,6 @@ if(isset($_GET['error'])){
 		<p class="cent">帳號 ： <input name="acc" autofocus="" type="text"></p>
 		<p class="cent">密碼 ： <input name="pw" type="password"></p>
 		<p class="cent"><input value="送出" type="submit"><input type="reset" value="清除"></p>
-		<input type="hidden" name="" id="id">
 		
 	</form>
 </div>

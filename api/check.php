@@ -9,7 +9,7 @@ if($Admin->count(['acc'=>$_POST['acc'],'pw'=>$_POST['pw']])>0){
 }else{
 	to("../index.php?do=login&error=帳號或密碼錯誤");
 }
-
+// 這邊是在判斷進站人數不重複計算
 
 
 
