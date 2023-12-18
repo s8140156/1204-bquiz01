@@ -87,8 +87,8 @@
 				// 但如果?do=後面亂打 則index首頁版面會亂(不知選什麼)
 				// 但若是沒有打do, 由於switchcase是基於do判斷 則會出現warning訊息
 
+				?>
 
-			?>
 			<!-- 以下這整塊搬去front/news.php使用 -->
 			<!-- <div id="alt" style="position: absolute; width: 350px; min-height: 100px; word-break:break-all; text-align:justify;  background-color: rgb(255, 255, 204); top: 50px; left: 400px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
 			<script>
@@ -112,44 +112,42 @@
 				<!-- 把do=admin -> do=login 只是切換到loginin頁面(管理者登入頁面) 因為改名字了-->
 				<div style="width:89%; height:480px;" class="dbor">
 					<span class="t botli">校園映象區</span>
+					<div class="cent" onclick="pp(1)"><img src="./icon/up.jpg" alt=""></div>
 					<?php
-					$imgs=$Images->all(['sh='=>1]);
+					$imgs=$Image->all(['sh'=>1]);
+
 					foreach($imgs as $idx => $img){
-
-						?>
-					<div id="ssaa" class="im"><img src="" style="width:150px;height:103px"></div>
-					<?php
-				}
 					?>
-					<script>
-						var nowpage = 1,
-							num = 0;
-							// 宣告變數 js用,分開即可
-							//調整nowpage = 0=>1
+						<div id="ssaa<?=$idx;?>" class='im cent' >
+							<img src="./img/<?=$img['img'];?>" style="width:150px;height:103px;border:3px solid orange;margin:3px">
+						</div>
+					<?php
+					}
+					?>
+					<div class="cent" onclick="pp(2)"><img src="./icon/dn.jpg" alt=""></div>
+						<script>
+                        	var nowpage=1,num=<?=$Image->count(['sh'=>1]);?>;
 
-						function pp(x) {
-							var s, t;
-							if (x == 1 && (nowpage - 1) >= 0) {
-								// 在php, 運算元最好隔開; js還好
-								// x=1應該是點擊上一頁
-								nowpage--;
+							function pp(x)
+							{
+								var s,t;
+								if(x==1 && nowpage-1>=0)
+								{nowpage--;}
+								if(x==2&&(nowpage+1)<=num*1-3)
+								{nowpage++;}
+								
+								$(".im").hide()
+								for(s=0;s<=2;s++)
+								{
+									t=s*1+nowpage*1;
+									$("#ssaa"+t).show()
+
+	 							}
 							}
-							if (x == 2 && (nowpage + 1) * 3 <= num * 1 + 3) {
-								// x=2應該是點擊下一頁
-								//每翻頁一次放三張圖片
-								nowpage++;
-							}
-							$(".im").hide()
-							//class=im的物件都會隱藏
-							for (s = 0; s <= 2; s++) {
-								//迴圈跑三次
-								t = s * 1 + nowpage * 1;
-								$("#ssaa" + t).show()
-								//id=ssaa+1or2or3...的物件會顯示
-							}
-						}
-						pp(1)
-					</script>
+
+
+							pp(2)
+                        </script>
 				</div>
 			</div>
 		</div>
