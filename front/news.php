@@ -17,7 +17,7 @@
 	$now = $_GET['p'] ?? 1;
 	$start = ($now - 1) * $div;
 	$news = $News->all(['sh' => 1], " limit $start,$div");
-	// limit前面還是加空白, 怕sql執行時 字跟字(各條件)黏在一起無法執行
+	// 從資料庫撈有顯示的 並限制是從該開始頁開始,每頁取五筆資料
 	?>
 	<ol start='<?= $start + 1; ?>'>
 		<!-- 這邊把ul->ol 然後就不使用style:decimal -->

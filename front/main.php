@@ -66,6 +66,8 @@
 				echo "<li>";
 				echo mb_substr($n['text'], 0, 20);
 				echo "<div class='all' style='display:none'>";
+				// 這是用在彈出視窗的內容, 以class=all綁js, display:none是不要讓內容顯示變兩個(主文區)
+				// 只是讓內容不要出現在html上 but js還是可以抓到資料 但如果使用hidden是真的會讓內容不見
 				echo $n['text'];
 				echo "</div>";
 				echo "...</li>";
@@ -73,6 +75,8 @@
 			?>
 		</ul>
 		<div id="altt" style="position: absolute; width: 350px; min-height: 100px; background-color: rgb(255, 255, 204); top: 50px; left: 130px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
+		<!-- 這邊是最新消息區的彈出視窗(顯示文章完整內容) -->
+		
 		<script>
 			$(".ssaa li").hover(
 				function() {
