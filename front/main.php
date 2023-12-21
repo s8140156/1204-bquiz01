@@ -7,35 +7,44 @@
 	<div style="width:100%; padding:2px; height:290px;">
 		<div id="mwww" loop="true" style="width:100%; height:100%;">
 			<!-- 搬移這塊往上(執行script的空間(容器))是因為先前script寫在上面 造成尚無空間可以執行 -->
+			<!-- 要建房子先找地! 之前html(地)位置是在js底下會導致js開始沒有承接的地方　所以容器mwww要先產生 -->
 			<div style="width:99%; height:100%; position:relative;" class="cent">沒有資料</div>
+			<!-- 在js程式 有一段.html("<embed loop=true src='./img/" + lin[now] + "' style='width:99%; height:100%;'></embed>")-->
+			<!-- 這邊插入圖片後 是取代上面div-->
 		</div>
 	</div>
 	<script>
 		var lin = new Array();
 		<?php
 		$lins = $Mvim->all(['sh' => 1]);
+		// 因為是在js底下操作 使用php叫出資料庫撈出mvim的資料讓他變成$lin陣列
 		foreach ($lins as $lin) {
 			echo "lin.push('{$lin['img']}');";
-			// 這邊只聽懂在後面字串寫完後要加; 不然會讓js在執行時 造成字沒有區隔 js無法執行;才可以判別是獨立字串
+			// 在js裡面執行php程式如果沒有把程式寫清楚(字串寫完後要加;)php會吃掉後面的程式 會讓js在執行時 造成字沒有區隔 js無法執行;才可以判別是獨立字串
+			//　可以在畫面上右鍵"檢查網頁原始碼"=>是看當下寫完的php程式狀況
+			//　最終是要把php撈出來的資料（變成字串）變成js陣列可以顯示
+			// lin.push在lin陣列push n個字串{$lin['img']}（記得後面要加;）
 		}
 		?>
 		var now = 0;
 		ww();
-		// 在這邊先執行一次js, 讓圖片可以直接顯示也不會變成先顯現第二張圖
+		// 在這邊先執行一次js, 讓圖片可以直接顯示也不會變成先顯現第二張圖;這不是新增　是調整執行位置
 		if (lin.length > 1) {
 			// 假如lin這個陣列個數>1(也就是陣列至少要2個)
 			setInterval("ww()", 3000);
 			// 每隔三秒鐘執行ww()一次(第一次執行是3秒後開始第一次)
 			now = 1;
+			//原先變數now預設0 但接下來執行setInterval 變數now為1(idx=1), 
+			//三秒後是顯示第二張圖;有修改程式在宣告now=0後先執行一次ww();讓圖片先顯示出來
 		}
 
 		function ww() {
 			$("#mwww").html("<embed loop=true src='./img/" + lin[now] + "' style='width:99%; height:100%;'></embed>")
-			// 這邊要記得把圖片路徑放上
+			// 這邊要記得把圖片路徑放上(在js程式下)
 			//$("#mwww").attr("src",lin[now])
 			now++;
 			if (now >= lin.length)
-				// length:指陣列的個數
+				// length:指lin的陣列的個數(數量)
 				now = 0;
 		}
 	</script>
