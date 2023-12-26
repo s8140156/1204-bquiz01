@@ -12,6 +12,7 @@
 				</tr>
 				<?php
 				$total = $DB->count();
+				//後台new的文章筆數是全部
 				$div = 5;
 				$pages = ceil($total / $div);
 				$now = $_GET['p'] ?? 1;
