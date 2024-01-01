@@ -154,25 +154,31 @@
 				<div style="width:89%; height:480px;" class="dbor">
 					<span class="t botli">校園映象區</span>
 					<div class="cent" onclick="pp(1)"><img src="./icon/up.jpg" alt=""></div>
+					<!-- 要放up圖示 -->
 					<?php
 					$imgs = $Image->all(['sh' => 1]);
 					
 
 					foreach ($imgs as $idx => $img) {
+						// echo $idx;
 					?>
 						<div id="ssaa<?= $idx; ?>" class='im cent'>
+						<!-- 圖片至中 可以用class=cent -->
+						<!-- 使用id=ssaa show圖片, 使用class=im hide圖片 -->
 							<img src="./img/<?= $img['img']; ?>" style="width:150px;height:103px;border:3px solid orange;margin:3px">
+							<!-- 這邊有加style編框 -->
 						</div>
 					<?php
 					}
 					?>
 					<div class="cent" onclick="pp(2)"><img src="./icon/dn.jpg" alt=""></div>
+					<!-- 要放dn圖示 -->
 					<script>
 						var nowpage = 1,
 							num = <?= $Image->count(['sh' => 1]); ?>;
 							// 宣告變數 js用,分開即可
                             //調整nowpage = 0=>1
-                            //調整總圖片數num = 0=>9;
+                            //調整總圖片數num = 0=>9;=>總圖片頁數跟著資料庫可被顯示的數量走
 
 						function pp(x) {
 							var s, t;
@@ -185,6 +191,8 @@
 								 // x=2點擊下一頁
                                 //每翻頁一次放三張圖片
                                 //以總圖片張數控制下一頁顯示(不要超過9張)
+							// if (x==2 && (nowpage+1)*3<= num*1+3) {
+								// 原程式寫法如上 但用倒推的 總頁數共9張可以按幾次是9-3=6次 所以有進行修改
 								nowpage++;
 							}
 
