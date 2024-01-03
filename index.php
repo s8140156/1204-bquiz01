@@ -36,18 +36,21 @@
 					<?php
 
 					$mainmu = $Menu->all(['sh' => 1, 'menu_id' => 0]);
+					//這邊注意 資料庫要找有顯示(在前台)及menu_id=0因為這才是主選單~
 					foreach ($mainmu as $main) {
 					?>
-					<div class="mainmu">
+					<div class="mainmu"> <!-- 主選單class & css & jq 並要把div提上層包a tag-->
+					<!-- 這邊觀察 如果是div(格式)包a 則超連結部分只有文字區塊 格式就無法觸及 -->
+					<!-- 下面次選單是a包div(格式) 則超連結部分整個格式都套用 -->
 						<a href="<?=$main['href'];?>" style="color:#000; font-size:13px; text-decoration:none;"><?=$main['text'];?></a>
 						<?php
 
-						if ($Menu->count(['menu_id' => $main['id']]) > 0) {
-							echo "<div class='mw'>";
+						if ($Menu->count(['menu_id' => $main['id']]) > 0) { //先判斷有沒有次選單 先用count
+							echo "<div class='mw'>"; // class=mw 用在jq程式 次選單show/hide & css格式(也有喔)  並把下階次選單包起來 保證下面次選單都可以hover到
 							$subs = $Menu->all(['menu_id' => $main['id']]);
 							foreach ($subs as $sub) {
 								echo "<a href='{$sub['href']}'>";
-								echo "<div class='mainmu2'>";
+								echo "<div class='mainmu2'>"; //加div(class=mainmu2 for 次選單css)
 								echo $sub['text'];
 								echo "</div>";
 								echo "</a>";
