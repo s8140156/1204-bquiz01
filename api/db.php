@@ -103,8 +103,9 @@ class DB{
 
     }
 
-    private function a2s($array){
+    private function a2s($array){ //這邊是輸入進來的值 準備要轉成sql語句 最開始的地方
         foreach ($array as $col => $value) {
+            $value=$this->check($value);
             $tmp[] = "`$col`='$value'";
         }
         return $tmp;
@@ -115,7 +116,6 @@ class DB{
         if (isset($this->table) && !empty($this->table)) {
     
             if (is_array($array)) {
-    
                 if (!empty($array)) {
                     $tmp = $this->a2s($array);
                     $sql .= " where " . join(" && ", $tmp);
@@ -129,6 +129,11 @@ class DB{
             // $rows = $this->pdo->query($sql)->fetchColumn();
             return $sql;
         } 
+    }
+    // 檢查及處理所有的參數
+    function check($arg){
+        $arg=htmlspecialchars($arg);
+        return $arg;
     }
 
 }
